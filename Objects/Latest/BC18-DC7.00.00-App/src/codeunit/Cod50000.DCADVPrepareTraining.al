@@ -27,6 +27,7 @@ Codeunit 50000 "DCADV Prepare Training"
         ReopenSOs;
 
         CreateMatchPO;
+        CreateSalesPersons;
     end;
 
 
@@ -95,5 +96,25 @@ Codeunit 50000 "DCADV Prepare Training"
     var
     begin
         Codeunit.Run(Codeunit::"DCADV Create PO for Matching");
+    end;
+
+    local procedure CreateSalespersons()
+    begin
+        //AH
+        CreateSalesPerson('AH', 'Andrea Hischer');
+        CreateSalesPerson('TZ', 'Thomas Zeilund');
+        CreateSalesPerson('JR', 'Joachim Richter');
+    end;
+
+    local procedure CreateSalesPerson(SalesPersonCode: Code[20]; Name: Text[30]): Boolean
+    var
+        SalesPersonPurchaser: Record "Salesperson/Purchaser";
+    begin
+        if not SalesPersonPurchaser.Get(SalesPersonCode) then begin
+            SalesPersonPurchaser.Init();
+            SalesPersonPurchaser.Code := SalesPersonCode;
+            SalesPersonPurchaser.Name := Name;
+            exit(SalesPersonPurchaser.Insert(true));
+        end;
     end;
 }

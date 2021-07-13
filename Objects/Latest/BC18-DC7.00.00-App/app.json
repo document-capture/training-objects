@@ -2,7 +2,7 @@
   "id": "7b82905f-6866-4e2c-b380-e20d5223e7f2",
   "name": "Document Capture Training",
   "publisher": "github.com/document-capture",
-  "version": "1.0.0.1",
+  "version": "1.0.0.2",
   "brief": "Extension for Continia Document Capture to prepare database for training.",
   "description": "Document Capture training extension",
   "privacyStatement": "",
